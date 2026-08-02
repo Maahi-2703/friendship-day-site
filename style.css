@@ -68,6 +68,8 @@ button {
     cursor: pointer
 }
 
+.sticker{position:absolute;z-index:1;pointer-events:none;object-fit:contain;filter:drop-shadow(2px 3px 0 rgba(74,72,83,.12))}.notification-camera{left:7%;bottom:8%;width:clamp(94px,13vw,175px);transform:rotate(-10deg)}.definition-paper{right:5%;top:8%;width:clamp(95px,12vw,155px);transform:rotate(6deg)}.memories-plate{left:6%;top:7%;width:clamp(108px,14vw,180px);transform:rotate(-6deg)}.letter-flowers{right:5%;bottom:6%;width:clamp(120px,16vw,210px);transform:rotate(7deg)}
+
 .stars {
     position: absolute;
     top: 8%;
@@ -245,35 +247,6 @@ h2 {
     transform: rotate(-8deg)
 }
 
-.award-result {
-    display: none;
-    text-align: center;
-    font: 1.6rem 'Caveat';
-    color: var(--deep)
-}
-
-.award-result b {
-    font-size: 2.2rem
-}
-
-.award-result button {
-    display: block;
-    margin: 12px auto 0;
-    background: var(--deep);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 99px
-}
-
-.award.revealed .award-card,
-.award.revealed .loading {
-    display: none
-}
-
-.award.revealed .award-result {
-    display: block
-}
-
 .memories {
     align-content: start;
     padding-top: 6vh
@@ -388,7 +361,7 @@ h2 {
 .tulips {
     position: absolute;
     right: -23px;
-    bottom: -18px;
+    bottom: -42px;
     font-size: 6rem;
     color: var(--pink)
 }

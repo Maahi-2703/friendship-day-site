@@ -72,12 +72,15 @@ function filterMemories(category) {
     tab.classList.toggle('active', active);
     tab.setAttribute('aria-selected', active);
   });
-  memoryLabel.textContent = category === 'all' ? 'Moments of us ♡' : category[0].toUpperCase() + category.slice(1) + ' of us ♡';
+  memoryLabel.textContent = category === 'all' ? 'Moments of us ♡' : category[0].toUpperCase() + category.slice(1) + ' from our group ♡';
   renderMemories();
 }
 
 document.querySelectorAll('.next,.restart').forEach(button => button.addEventListener('click', () => showPage(Number(button.dataset.next))));
-document.getElementById('awardBtn').addEventListener('click', () => document.querySelector('.award').classList.add('revealed'));
+document.getElementById('awardBtn').addEventListener('click', () => {
+  filterMemories('all');
+  showPage(3);
+});
 memoryTabs.forEach(tab => tab.addEventListener('click', () => filterMemories(tab.dataset.filter)));
 desktopMemoryLayout.addEventListener('change', () => {
   memoryPage = 0;
@@ -95,6 +98,7 @@ document.getElementById('whatsappBtn').addEventListener('click', () => {
 const backgroundMusic = document.getElementById('backgroundMusic');
 const musicToggle = document.getElementById('musicToggle');
 const musicLabel = musicToggle.querySelector('.music-label');
+backgroundMusic.volume = 0.55;
 
 function setMusicButtonState(playing) {
   musicToggle.classList.toggle('playing', playing);
@@ -104,7 +108,9 @@ function setMusicButtonState(playing) {
 }
 
 musicToggle.addEventListener('click', async () => {
-  if (backgroundMusic.paused) {
+  const wasMuted = backgroundMusic.muted;
+  backgroundMusic.muted = false;
+  if (backgroundMusic.paused || wasMuted) {
     try {
       await backgroundMusic.play();
       setMusicButtonState(true);
@@ -117,6 +123,15 @@ musicToggle.addEventListener('click', async () => {
   }
 });
 
+function enableSound(event) {
+  if (event.target && event.target.closest && event.target.closest('#musicToggle')) return;
+  backgroundMusic.muted = false;
+  backgroundMusic.play().then(() => setMusicButtonState(true)).catch(() => setMusicButtonState(false));
+}
+
+document.addEventListener('pointerdown', enableSound, { once: true });
+document.addEventListener('keydown', enableSound, { once: true });
+
 filterMemories('all');
 showPage(0);
-backgroundMusic.play().then(() => setMusicButtonState(true)).catch(() => setMusicButtonState(false));
+backgroundMusic.play().then(() => setMusicButtonState(false)).catch(() => setMusicButtonState(false));

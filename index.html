@@ -17,8 +17,9 @@
 <body>
   <main class="scrapbook">
     <section class="page active notification">
+      <img class="sticker notification-camera" src="assets/sticker-camera.png" alt="">
       <div class="stars">★ &nbsp; ✦ &nbsp; ★ &nbsp; ✦ &nbsp; ★</div>
-      <p class="mini">A tiny message, just for you</p>
+      <p class="mini">A tiny message for my favourite people</p>
       <h1>You have a<br><span>notification!</span></h1><button class="phone next"
         data-next="1"><span>♡</span><small>click me</small></button>
       <p class="hint">tap the phone</p><span class="corner-cat">♡</span>
@@ -26,6 +27,7 @@
     <section class="page definition"><span class="definition-doodle one">✦</span><span
         class="definition-doodle two">♡</span>
       <p class="topline">Happy Friendship Day</p>
+      <img class="sticker definition-paper" src="assets/sticker-friends-paper.png" alt="">
       <div class="definition-layout">
         <figure class="definition-polaroid"><i class="photo-tape"></i><img src="assets/trip3.jpg"
             alt="Friends making a memory together">
@@ -35,23 +37,22 @@
           <p class="card-label">THE FRIENDSHIP DICTIONARY</p>
           <p class="word">friends</p>
           <p class="pronounce">/frend/ · noun</p>
-          <p>People who know how weird you are and love you for it. People who can make you laugh on your hardest days
-            and turn ordinary moments into stories you will hold close forever.</p><button class="arrow next"
+          <p>The people who know every version of you and still choose you. Friends who turn ordinary days,
+            inside jokes, and endless conversations into stories we’ll hold close forever.</p><button class="arrow next"
             data-next="2">next →</button>
         </div>
       </div>
-      <p class="bottom-note">the best thing you can have, and the best thing you can be.</p>
+      <p class="bottom-note">good friends, one little chosen family.</p>
     </section>
     <section class="page award">
-      <h2>Lifetime Bestie Award</h2>
+      <h2>Lifetime Besties Award</h2>
       <p class="loading" id="loadingText">click to reveal...</p><button class="award-card"
-        id="awardBtn"><span>🏆</span><strong>Certified<br>bestie</strong><small>tap me!</small></button>
-      <div class="speech">Yes! you deserve that</div>
-      <div class="award-result">officially my<br><b>forever friend</b> ♡<button class="next" data-next="3">see our
-          memories →</button></div>
+        id="awardBtn"><span>🏆</span><strong>Certified<br>besties</strong><small>tap me!</small></button>
+      <div class="speech">We all deserve this!</div>
     </section>
     <section class="page memories">
       <h2>Memories</h2>
+      <img class="sticker memories-plate" src="assets/sticker-memories-plate.png" alt="">
       <div class="search">⌕ <span id="memorySearchLabel">Moments of us ♡</span><i>⌕</i></div>
       <div class="tabs" role="tablist" aria-label="Memory categories"><button class="memory-tab active"
           data-filter="all" role="tab" aria-selected="true">All</button><button class="memory-tab" data-filter="images"
@@ -79,19 +80,21 @@
       </div><button class="next memory-next" data-next="4">one more thing →</button>
     </section>
     <section class="page letter">
+      <img class="sticker letter-flowers" src="assets/sticker-flower-envelope.png" alt="">
       <div class="letter-paper"><span class="tulips">✿</span>
-        <h2>To my forever best friend</h2>
-        <p>Happy Friendship Day to my forever best friend. I’m so grateful to have you in my life. Thank you for being
-          my biggest supporter, my secret keeper, and the one who always knows how to make me smile.<br><br>From endless
-          talks to silly laughs and every moment in between, life feels brighter because of you. Wishing you all the
-          happiness, love, peace, and success you truly deserve. Never forget how special, strong, and deeply loved you
-          are.</p>
+        <h2>To my forever best friends</h2>
+        <p>Happy Friendship Day to my forever best friends. I’m so grateful that we found each other.
+          Thank you for being my biggest supporters, my secret keepers, and the people who always know how to make me
+          smile.<br><br>From endless talks and silly laughs to every moment in between, life feels brighter because of
+          you all. Here’s to our little group, our shared chaos, and every memory still waiting for us. Wishing each of
+          you the happiness, love, peace, and success you truly deserve. Never forget how special, strong, and deeply
+          loved you are.</p>
         <p class="signature">with love, always ♡</p>
       </div><button class="restart" data-next="0">↺ replay scrapbook</button><button id="whatsappBtn">share on
         WhatsApp</button>
     </section>
   </main>
-  <audio id="backgroundMusic" src="assets/background-music.mp3" autoplay loop preload="auto"></audio>
+  <audio id="backgroundMusic" src="assets/background-music.mp3" autoplay muted loop preload="auto"></audio>
   <button id="musicToggle" class="music-toggle" type="button" aria-label="Play background music" aria-pressed="false">
     <span aria-hidden="true">♫</span><span class="music-label">Play music</span>
   </button>
