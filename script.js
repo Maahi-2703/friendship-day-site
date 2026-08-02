@@ -4,9 +4,13 @@ const memoryTabs = [...document.querySelectorAll('.memory-tab')];
 const memoryPhotos = [...document.querySelectorAll('.memory-grid img')];
 const memoryLabel = document.getElementById('memorySearchLabel');
 const memoryGrid = document.querySelector('.memory-grid');
-const perMemoryPage = 6;
+const desktopMemoryLayout = window.matchMedia('(min-width: 601px)');
 let currentCategory = 'all';
 let memoryPage = 0;
+
+function perMemoryPage() {
+  return desktopMemoryLayout.matches ? 6 : 4;
+}
 
 function rotateImageLeft(image) {
   const source = image.currentSrc || image.src;
@@ -39,12 +43,19 @@ function showPage(index) {
 
 function renderMemories() {
   const visiblePhotos = memoryPhotos.filter(photo => currentCategory === 'all' || photo.dataset.category === currentCategory);
-  const totalPages = Math.ceil(visiblePhotos.length / perMemoryPage);
+  const photosPerPage = perMemoryPage();
+  const totalPages = Math.ceil(visiblePhotos.length / photosPerPage);
   memoryPage = Math.min(memoryPage, Math.max(totalPages - 1, 0));
-  const first = memoryPage * perMemoryPage;
+  const first = memoryPage * photosPerPage;
 
-  memoryPhotos.forEach(photo => photo.classList.add('hidden'));
-  visiblePhotos.slice(first, first + perMemoryPage).forEach(photo => photo.classList.remove('hidden'));
+  memoryPhotos.forEach(photo => {
+    photo.classList.add('hidden');
+    photo.classList.remove('tile-0', 'tile-1', 'tile-2', 'tile-3');
+  });
+  visiblePhotos.slice(first, first + photosPerPage).forEach((photo, index) => {
+    photo.classList.remove('hidden');
+    photo.classList.add(`tile-${index}`);
+  });
 
   memoryPager.querySelector('span').textContent = totalPages > 1 ? `${memoryPage + 1} / ${totalPages}` : `${visiblePhotos.length} photos`;
   const buttons = memoryPager.querySelectorAll('button');
@@ -68,6 +79,10 @@ function filterMemories(category) {
 document.querySelectorAll('.next,.restart').forEach(button => button.addEventListener('click', () => showPage(Number(button.dataset.next))));
 document.getElementById('awardBtn').addEventListener('click', () => document.querySelector('.award').classList.add('revealed'));
 memoryTabs.forEach(tab => tab.addEventListener('click', () => filterMemories(tab.dataset.filter)));
+desktopMemoryLayout.addEventListener('change', () => {
+  memoryPage = 0;
+  renderMemories();
+});
 memoryPager.querySelectorAll('button').forEach((button, index) => button.addEventListener('click', () => {
   memoryPage += index === 0 ? -1 : 1;
   renderMemories();
@@ -76,5 +91,32 @@ document.getElementById('whatsappBtn').addEventListener('click', () => {
   const message = encodeURIComponent('Happy Friendship Day! I made this little scrapbook for you.\n\n' + location.href);
   window.open('https://wa.me/?text=' + message, '_blank');
 });
+
+const backgroundMusic = document.getElementById('backgroundMusic');
+const musicToggle = document.getElementById('musicToggle');
+const musicLabel = musicToggle.querySelector('.music-label');
+
+function setMusicButtonState(playing) {
+  musicToggle.classList.toggle('playing', playing);
+  musicToggle.setAttribute('aria-label', playing ? 'Pause background music' : 'Play background music');
+  musicToggle.setAttribute('aria-pressed', String(playing));
+  musicLabel.textContent = playing ? 'Pause music' : 'Play music';
+}
+
+musicToggle.addEventListener('click', async () => {
+  if (backgroundMusic.paused) {
+    try {
+      await backgroundMusic.play();
+      setMusicButtonState(true);
+    } catch {
+      musicLabel.textContent = 'Tap to play';
+    }
+  } else {
+    backgroundMusic.pause();
+    setMusicButtonState(false);
+  }
+});
+
 filterMemories('all');
 showPage(0);
+backgroundMusic.play().then(() => setMusicButtonState(true)).catch(() => setMusicButtonState(false));

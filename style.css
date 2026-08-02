@@ -320,21 +320,25 @@ h2 {
 .memory-grid {
     width: min(730px, 90vw);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(120px, 1fr));
+    height: clamp(255px, 35vh, 330px);
+    gap: 14px;
+    place-items: center
 }
 
 .memory-grid img {
-    width: 100%;
-    aspect-ratio: 1.13;
-    object-fit: cover;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     border: 5px solid #fff;
-    box-shadow: 2px 3px #4a485333
+    box-shadow: 3px 4px #4a485333;
+    transition: transform .2s ease
 }
 
-.memory-grid img[src$="20230819_124644.jpg"] {
-    object-position: top
-}
+.memory-grid img:hover{transform:scale(1.02)}.memory-grid img.tile-0{transform:rotate(-1.2deg)}.memory-grid img.tile-1{transform:rotate(1.1deg)}.memory-grid img.tile-2{transform:rotate(-.8deg)}.memory-grid img.tile-3{transform:rotate(.7deg)}.memory-grid img.tile-0:hover,.memory-grid img.tile-1:hover,.memory-grid img.tile-2:hover,.memory-grid img.tile-3:hover{transform:scale(1.02)}
 
 .memory-grid img.hidden {
     display: none
@@ -416,6 +420,8 @@ h2 {
     background: var(--deep)
 }
 
+.music-toggle{position:fixed;z-index:10;top:18px;right:20px;display:flex;align-items:center;gap:8px;padding:10px 13px;border:2px solid var(--deep);border-radius:99px;background:#fffdf0;color:var(--deep);box-shadow:3px 4px #4a485333;font:700 .7rem 'Plus Jakarta Sans';letter-spacing:.04em;text-transform:uppercase}.music-toggle>span:first-child{font-size:1.1rem}.music-toggle.playing{background:var(--deep);color:#fff}.music-toggle.playing>span:first-child{animation:music-pulse .8s ease-in-out infinite alternate}@keyframes music-pulse{to{transform:rotate(-10deg) scale(1.2)}}
+
 @media(max-width:600px) {
     .page {
         padding: 20px 6vw
@@ -448,6 +454,9 @@ h2 {
     }
 
     .memory-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(120px, 1fr));
+        height: clamp(275px, 42vh, 395px);
         gap: 4px
     }
 
@@ -462,4 +471,6 @@ h2 {
     .progress {
         right: 8px
     }
+
+    .music-toggle{top:12px;right:14px;padding:8px 10px}.music-label{display:none}
 }
