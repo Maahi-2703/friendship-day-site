@@ -13,7 +13,7 @@ document.querySelector('.section').scrollIntoView({behavior:'smooth'});
 });
 
 document.getElementById('whatsappBtn').addEventListener('click', ()=>{
-const message = encodeURIComponent('Happy Friendship Day! I made this little scrapbook for you 💖\n\n' + window.location.href);
+const message = encodeURIComponent('Happy Friendship Day! I made this little scrapbook for you.\n\n' + window.location.href);
 window.open(`https://wa.me/?text=${message}`, '_blank');
 });
 
