@@ -86,7 +86,7 @@ button {
 .notification-cats {
     right: 1%;
     bottom: 0%;
-    width: clamp(220px, 30vw, 360px)
+    width: clamp(180px, 30vw, 360px)
 }
 
 .definition-paper {
@@ -99,13 +99,13 @@ button {
 .definition-tea {
     left: 0%;
     bottom: 0%;
-    width: clamp(150px, 19vw, 225px)
+    width: clamp(110px, 19vw, 225px)
 }
 
 .memories-plate {
     left: 6%;
     top: 7%;
-    width: clamp(108px, 14vw, 180px);
+    width: clamp(66px, 14vw, 180px);
     transform: rotate(-6deg)
 }
 
@@ -118,7 +118,7 @@ button {
 .letter-flowers {
     right: 5%;
     bottom: 6%;
-    width: clamp(120px, 16vw, 210px);
+    width: clamp(80px, 16vw, 210px);
     transform: rotate(7deg)
 }
 
@@ -775,31 +775,29 @@ h2 {
 
     .award .speech {
         left: auto;
-        right: 3%;
-        bottom: 8%;
+        right: 40%;
+        bottom: 4%;
         font-size: .92rem
     }
 
-    .award-sunnies,
-    .award-doodle,
-    .flower-one,
-    .flower-two {
-        display: none !important
-    }
-
     .heart-one {
-        left: 4%;
+        left: 9%;
         top: 12%
     }
 
     .heart-two {
-        right: 3%;
+        right: 6%;
         bottom: 5%
     }
 
     .sparkle-one {
-        left: 27%;
-        top: 14%
+        left: 66%;
+        top: 3%;
+    }
+
+    .sparkle-two {
+        left: 72%;
+        bottom: 20%;
     }
 
     .award-camera {
@@ -807,9 +805,24 @@ h2 {
         top: 16%
     }
 
+    .award-sunnies {
+        left: 10%;
+        top: 31%;
+    }
+
+    .flower-two {
+        right: 6%;
+        top: 46%;
+    }
+
     .award-star {
-        right: 5%;
-        top: 38%
+        right: 4%;
+        top: 12%;
+    }
+
+    .memories-plate {
+        left: 3%;
+        top: 1%;
     }
 
     .memory-grid {
@@ -821,6 +834,11 @@ h2 {
 
     .letter-paper {
         padding: 30px 20px
+    }
+
+    .letter-flowers {
+        right: 0%;
+        bottom: -1%;
     }
 
     .tulips {
