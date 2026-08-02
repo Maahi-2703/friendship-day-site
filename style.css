@@ -191,6 +191,7 @@ padding:14px;
 border-radius:22px;
 box-shadow:0 22px 46px rgba(142,197,255,.18);
 transition:.3s ease;
+overflow:hidden;
 }
 
 .photo-card:hover{
@@ -199,6 +200,8 @@ transform:translateY(-8px) rotate(1deg);
 
 .photo-card img{
 width:100%;
+aspect-ratio:4 / 3;
+object-fit:cover;
 display:block;
 border-radius:14px;
 }
